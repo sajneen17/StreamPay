@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StreamPay | Micro-Salary Protocol</title>
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <div>
+          <p class="eyebrow">DECENTRALIZED PAYROLL</p>
+          <h1>StreamPay</h1>
+          <p class="subtitle">Continuous ETH salary vesting, by the second.</p>
+        </div>
+        <button id="connectBtn">Connect MetaMask</button>
+      </header>
+
+      <section class="wallet-card">
+        <div>
+          <span class="label">Connected wallet</span>
+          <strong id="walletAddress">Not connected</strong>
+        </div>
+        <div>
+          <span class="label">Network</span>
+          <strong id="networkStatus">Not connected</strong>
+        </div>
+        <div>
+          <span class="label">Detected role</span>
+          <strong id="roleStatus">Guest</strong>
+        </div>
+      </section>
+
+      <p id="message" class="message">Connect MetaMask to begin.</p>
+
+      <section id="adminPanel" class="panel hidden">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">PROTOCOL ADMIN</p>
+            <h2>Fee Treasury</h2>
+          </div>
+          <span class="badge admin">Admin</span>
+        </div>
+        <p>Accumulated protocol fees</p>
+        <div id="adminFee" class="big-number">0.000000 ETH</div>
+        <button id="claimFeesBtn">Claim Admin Fees</button>
+      </section>
+
+      <section id="employerPanel" class="panel hidden">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">EMPLOYER</p>
+            <h2>Create Salary Stream</h2>
+          </div>
+          <span class="badge employer">Employer</span>
+        </div>
+
+        <form id="createForm">
+          <label>
+            Employee wallet address
+            <input id="employeeInput" type="text" placeholder="0x..." required />
+          </label>
+          <label>
+            Company ID
+            <input id="companyIdInput" type="number" min="1" value="1" required />
+          </label>
+          <label>
+            Duration in seconds
+            <input id="durationInput" type="number" min="16" value="120" required />
+          </label>
+          <label>
+            ETH deposit
+            <input id="amountInput" type="number" min="0.000001" step="0.000001" value="1" required />
+          </label>
+          <button type="submit">Create Stream</button>
+        </form>
+
+        <div class="divider"></div>
+        <h3>Outgoing Active Streams</h3>
+        <div id="employerStreams" class="stream-list"></div>
+      </section>
+
+      <section id="employeePanel" class="panel hidden">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">EMPLOYEE</p>
+            <h2>Incoming Salary Streams</h2>
+          </div>
+          <span class="badge employee">Employee</span>
+        </div>
+        <p class="muted">The claimable amount is calculated locally every second after a single state fetch.</p>
+        <div id="employeeStreams" class="stream-list"></div>
+      </section>
+
+      <section id="guestPanel" class="panel">
+        <h2>Welcome to StreamPay</h2>
+        <p>Connect an imported Anvil account on <strong>Chain ID 31337</strong>.</p>
+        <p>Account #0 is Admin, Account #1 is Employer, and Account #2 is Employee.</p>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
