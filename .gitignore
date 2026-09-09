@@ -1,20 +1,10 @@
-# Compiler files
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
 cache/
 out/
-
-# Commonly ignored directories
-.logs/
-.ignore/
-
-# Ignores development broadcast logs
-!/broadcast
-/broadcast/*/31337/
-/broadcast/**/dry-run/
-
-# Docs
-docs/
-
-# Dotenv file
+broadcast/
 .env
 .env.*
-!.env.example
+*.key
